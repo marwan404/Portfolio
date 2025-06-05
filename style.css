@@ -355,3 +355,125 @@ body {
     font-size: 0.95rem;
     color: #888;
 }
+
+/* Burger menu styles */
+.burger-menu {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 36px;
+    height: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.2s;
+}
+.burger-menu span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(.4,2,.6,1);
+}
+.burger-menu.active span:nth-child(1) {
+    transform: translateY(12px) rotate(45deg);
+}
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+.burger-menu.active span:nth-child(3) {
+    transform: translateY(-12px) rotate(-45deg);
+}
+
+/* Popup menu styles */
+.menu-popup {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 4.5rem;
+    right: 2rem;
+    min-width: 210px;
+    background: #fff;
+    color: #222;
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(67,67,252,0.12);
+    padding: 0.7rem 0;
+    z-index: 1002;
+    transform: translateY(-10px) scale(0.98);
+    transition: opacity 0.25s, transform 0.25s;
+}
+.menu-popup.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+.menu-popup ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.menu-popup li {
+    padding: 0;
+    margin: 0;
+}
+.menu-popup button {
+    width: 100%;
+    background: none;
+    color: #222;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    transition: background 0.2s, color 0.2s;
+}
+.menu-popup button:hover,
+.menu-popup button:focus {
+    background: #f0f0ff;
+    color: #673ab7;
+    outline: none;
+}
+
+body.dark-mode {
+    background: #181828;
+    color: #e0e0e0; /* Slightly lighter text for better readability */
+}
+
+body.dark-mode #intro {
+    background-image: linear-gradient(135deg, #23235c, #6d1e6d);
+    color: #e0e0e0; /* Adjust text color */
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); /* Add subtle shadow */
+}
+
+body.dark-mode .skill-card,
+body.dark-mode .qual-card,
+body.dark-mode form {
+    background: #23235c;
+    color: #e0e0e0; /* Adjust text color */
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); /* Add subtle shadow */
+}
+
+body.dark-mode .site-footer {
+    background: #23235c;
+    color: #e0e0e0; /* Adjust text color */
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); /* Add subtle shadow */
+}
+
+body.dark-mode h2, body.dark-mode h3 {
+    color: #ffffff; /* Make headings brighter */
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.6); /* Add stronger shadow for headings */
+}
+
+body.dark-mode p {
+    color: #dcdcdc; /* Slightly lighter paragraph text */
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.4); /* Subtle shadow for paragraphs */
+}
