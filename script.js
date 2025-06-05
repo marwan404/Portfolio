@@ -20,6 +20,7 @@ faders.forEach(fader => {
 const burgerMenu = document.getElementById('burgerMenu');
 const menuPopup = document.getElementById('menuPopup');
 const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+const colorSchemePicker = document.getElementById('colorSchemePicker');
 
 // Toggle menu open/close with animation
 burgerMenu.addEventListener('click', () => {
@@ -48,3 +49,30 @@ toggleThemeBtn.addEventListener('click', () => {
     burgerMenu.classList.remove('active');
     menuPopup.classList.remove('show');
 });
+
+colorSchemePicker.addEventListener('input', (e) => {
+    document.documentElement.style.setProperty('--accent', e.target.value);
+    // Optionally, set a darker shade for hover
+    document.documentElement.style.setProperty('--accent-dark', shadeColor(e.target.value, -15));
+});
+
+// Helper to darken color
+function shadeColor(color, percent) {
+    let R = parseInt(color.substring(1,3),16);
+    let G = parseInt(color.substring(3,5),16);
+    let B = parseInt(color.substring(5,7),16);
+
+    R = parseInt(R * (100 + percent) / 100);
+    G = parseInt(G * (100 + percent) / 100);
+    B = parseInt(B * (100 + percent) / 100);
+
+    R = (R<255)?R:255;  
+    G = (G<255)?G:255;  
+    B = (B<255)?B:255;  
+
+    let RR = ((R.toString(16).length==1)?"0":"") + R.toString(16);
+    let GG = ((G.toString(16).length==1)?"0":"") + G.toString(16);
+    let BB = ((B.toString(16).length==1)?"0":"") + B.toString(16);
+
+    return "#"+RR+GG+BB;
+}
